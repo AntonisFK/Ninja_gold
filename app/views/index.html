@@ -1,0 +1,76 @@
+<html>
+  <head>
+  	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+ </head>
+ <body>
+	<div id="wrapper">
+		<div id="building">
+			
+			<div id= "build" >
+				<h3>Farm</h3>{{session['farm']}}
+				<p>(earns - 10-20 gold)</p>
+				<form action="/process_money" method= "post">
+					<input type="hidden" name="building" value="farm"/>
+					<input type="submit" class="btn btn-warning " value="Find Gold">		
+		
+				</form>
+			</div>		
+			
+				
+			<div class= "build">
+				<h3>cave</h3>
+				<p>(earns 5-10 gold)</p>
+				<form action="/process_money" method= "post">
+					<input type="hidden" name="building" value="cave"/>
+					<input type="submit" class="btn btn-warning " value="Find Gold">		
+		
+				</form>
+			</div>		
+
+				
+			<div class= "build">
+				<h3>House</h3>
+				<p>(earns 2 - 5 gold)</p>
+				<form action="/process_money" method= "post">
+					<input type="hidden" name="building" value="house"/>
+					<input type="submit" class="btn btn-warning " value="Find Gold">		
+		
+				</form>
+			</div>		
+
+		
+				
+			<div class= "build">
+				<h3>Casino</h3>
+				<p>(earns -50 - 50 gold)</p>
+				<form action="/process_money" method= "post">
+					<input type="hidden" name="building" value="casino"/>
+					<input type="submit" class="btn btn-warning " value="Find Gold">		
+		
+				</form>
+			</div>		
+		
+		</div>
+		<div class="gold">
+			<h2>Amount of gold: {{gold}}</h2>
+			<p>Activities</p>
+			{%for i in status[::-1]: %}
+				{% if i.find("Earned") == -1:%}
+					<div class="red" style = "color:red;">  {{i}}</div>
+				{%else:%}
+					<div class="green" style = "color:green;">  {{i}}</div>
+			{%endif%}
+			{%endfor%}
+
+
+		</div>
+
+
+	</div>  
+
+
+</body>
+</html>
